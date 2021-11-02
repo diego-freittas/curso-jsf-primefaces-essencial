@@ -1,6 +1,7 @@
 package com.algaworks.erp.model;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -46,6 +47,17 @@ public class Empresa implements Serializable {
 	@Enumerated(EnumType.STRING)
 	@Column(nullable = false, length = 30)
 	private TipoEmpresa tipo;
+	
+	@Column(precision = 10, scale = 2)
+	private BigDecimal faturamento;
+	
+	public BigDecimal getFaturamento() {
+        return faturamento;
+    }
+	
+	public void setFaturamento(BigDecimal faturamento) {
+        this.faturamento = faturamento;
+    }
 
 	public Long getId() {
 		return id;
@@ -94,8 +106,6 @@ public class Empresa implements Serializable {
 	public void setRamoAtividade(RamoAtividade ramoAtividade) {
 		this.ramoAtividade = ramoAtividade;
 	}
-	
-	
 
 	public TipoEmpresa getTipo() {
 		return tipo;
@@ -133,6 +143,5 @@ public class Empresa implements Serializable {
 	@Override
 	public String toString() {
 		return "Empresa [id=" + id + "]";
-	}
-
+	}	
 }

@@ -3,6 +3,7 @@ package com.algaworks.erp.repository;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 
@@ -12,6 +13,7 @@ public class Empresas implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
+	@Inject
 	private EntityManager manager;
 
 	public Empresas() {
@@ -36,13 +38,16 @@ public class Empresas implements Serializable {
 		
 		return query.getResultList();
 	}
+	
+	public List<Empresa> todas() {
+         return manager.createQuery("from Empresa", Empresa.class).getResultList();
+    }
 
 	public Empresa guardar(Empresa empresa) {
-		return manager.merge(empresa); // insert or update
+		return manager.merge(empresa);
 	}
 
 	public void remover(Empresa empresa) {
-		// quando buscou pelo ID usando um método do manager ele já coloca no contexto de regenciamento 
 		empresa = porId(empresa.getId());
 		manager.remove(empresa);
 	}

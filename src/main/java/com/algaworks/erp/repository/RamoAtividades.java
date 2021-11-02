@@ -2,6 +2,7 @@ package com.algaworks.erp.repository;
 
 import com.algaworks.erp.model.RamoAtividade;
 
+import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
@@ -15,6 +16,7 @@ public class RamoAtividades implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
+	@Inject
 	private EntityManager manager;
 
 	public RamoAtividades() {
@@ -26,12 +28,10 @@ public class RamoAtividades implements Serializable {
 	}
 	
 	public List<RamoAtividade> pesquisar(String descricao) {
-		
 		CriteriaBuilder criteriaBuilder = manager.getCriteriaBuilder();
-		CriteriaQuery<RamoAtividade> criteriaQuery = criteriaBuilder.createQuery(RamoAtividade.class);	
 		
-		Root<RamoAtividade> root = criteriaQuery.from(RamoAtividade.class);
-		
+		CriteriaQuery<RamoAtividade> criteriaQuery = criteriaBuilder.createQuery(RamoAtividade.class);		
+		Root<RamoAtividade> root = criteriaQuery.from(RamoAtividade.class);			
 		criteriaQuery.select(root);				
 		criteriaQuery.where(criteriaBuilder.like(root.get("descricao"), descricao + "%"));		
 		
@@ -40,3 +40,4 @@ public class RamoAtividades implements Serializable {
 		return query.getResultList();
 	}
 }
+
