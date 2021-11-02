@@ -1,54 +1,73 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
- 	xmlns:h="http://xmlns.jcp.org/jsf/html"
- 	xmlns:f="http://xmlns.jcp.org/jsf/core"
- 	xmlns:p="http://primefaces.org/ui">
-<h:head>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	template="WEB-INF/template/Layout.xhtml">
 
-<meta charset="UTF-8"/>
-<title>Gestão Empresas</title>
+	<ui:define name="titulo">
+	Cadastro de Empresas
+</ui:define>
 
-<h:outputStylesheet library="algaworks" name="estilo.css" />
+	<ui:define name="conteudo">
+		<f:metadata>
+			<f:viewAction action="#{gestaoEmpresasBean.todasEmpresas}" />
+		</f:metadata>
 
-<f:metadata>
-	<f:viewAction action="#{gestaoEmpresasBean.todasEmpresas}" />
-</f:metadata>
+		<h:form>
+			<p:toolbar>
+				<f:facet name="left">
+					<p:inputText placeholder="Digite aqui um termo para pesquisa..."
+						size="30" />
 
-</h:head>
+					<p:commandButton value="Pesquisar" icon="fa fa fa-search" />
 
-<h:body>
-	<header>
-		<h:graphicImage library="algaworks" name="logo.png" />
-	</header>
-	
-	<h2>Cadastro de Empresas</h2>
+					<span class="ui-separator"> <span
+						class="ui-icon ui-icon-grip-dotted-vertical" />
+					</span>
 
-	<div id="conteudo">
-	
-		<p:dataTable value="#{gestaoEmpresasBean.listaEmpresas}"
-			var="empresa" emptyMessage="Nenhuma informação a ser exibida">
-			<p:column headerText="Razão social">
-				<h:outputText value="#{empresa.razaoSocial}" />
-			</p:column>
-			
-			<p:column headerText="Nome fantasia">
-				<h:outputText value="#{empresa.nomeFantasia}" />
-			</p:column>
-			
-			<p:column headerText="Tipo empresa">
-				<h:outputText value="#{empresa.tipo}" />
-			</p:column>
-			
-			<p:column headerText="Ramo atividade">
-				<h:outputText value="#{empresa.ramoAtividade.descricao}" />
-			</p:column>
-		</p:dataTable>
-			
-	</div>
-	
-	<footer>
-		Curso online "JSF e PrimeFaces Essencial"
-	</footer>
-</h:body>
+					<p:commandButton value="Nova Empresa" icon="fa fa-plus" />
 
-</html>
+					<span class="ui-separator"> <span
+						class="ui-icon ui-icon-grip-dotted-vertical" />
+					</span>
+
+					<p:commandButton title="Editar" icon="fa fa-edit" />
+
+					<p:commandButton title="Excluir" icon="fa fa-trash" />
+
+					<span class="ui-separator"> <span
+						class="ui-icon ui-icon-grip-dotted-vertical" />
+					</span>
+
+					<p:commandButton title="Exportar para o Excel"
+						icon="fa fa-file-excel-o" />
+				</f:facet>
+			</p:toolbar>
+
+			<p:spacer height="20px" />
+
+			<p:dataTable value="#{gestaoEmpresasBean.listaEmpresas}"
+				var="empresa" emptyMessage="Nenhuma informação a ser exibida"
+				paginator="true" rows="10" paginatorPosition="bottom">
+				<p:column headerText="Razão social" sortBy="#{empresa.razaoSocial}">
+					<h:outputText value="#{empresa.razaoSocial}" />
+				</p:column>
+
+				<p:column headerText="Nome fantasia">
+					<h:outputText value="#{empresa.nomeFantasia}" />
+				</p:column>
+
+				<p:column headerText="Tipo empresa">
+					<h:outputText value="#{empresa.tipo}" />
+				</p:column>
+
+				<p:column headerText="Ramo atividade">
+					<h:outputText value="#{empresa.ramoAtividade.descricao}" />
+				</p:column>
+			</p:dataTable>
+		</h:form>
+	</ui:define>
+
+</ui:composition>

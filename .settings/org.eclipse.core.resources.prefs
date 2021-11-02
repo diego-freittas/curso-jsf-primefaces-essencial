@@ -1,6 +1,16 @@
 eclipse.preferences.version=1
 encoding//src/main/java=UTF-8
+encoding//src/main/java/com/algaworks/erp/controller/GestaoEmpresasBean.java=UTF-8
+encoding//src/main/java/com/algaworks/erp/model/Empresa.java=UTF-8
+encoding//src/main/java/com/algaworks/erp/model/RamoAtividade.java=UTF-8
+encoding//src/main/java/com/algaworks/erp/model/TipoEmpresa.java=UTF-8
+encoding//src/main/java/com/algaworks/erp/util/EntityManagerProducer.java=UTF-8
+encoding//src/main/java/com/algaworks/erp/util/Transacional.java=UTF-8
+encoding//src/main/java/com/algaworks/erp/util/TransacionalInterceptor.java=UTF-8
 encoding//src/main/resources=UTF-8
+encoding//src/main/resources/META-INF/persistence.xml=UTF-8
+encoding//src/main/resources/META-INF/sql/dados-iniciais.sql=UTF-8
+encoding//src/main/webapp/WEB-INF/template/Layout.xhtml=UTF-8
 encoding//src/test/java=UTF-8
 encoding//src/test/resources=UTF-8
 encoding/<project>=UTF-8
